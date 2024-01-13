@@ -15,9 +15,17 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.example.android_lab03.databinding.ActivityMainBinding;
+import com.google.android.material.textfield.TextInputEditText;
 
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ListView;
+import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -33,18 +41,22 @@ public class MainActivity extends AppCompatActivity {
 
         setSupportActionBar(binding.toolbar);
 
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
-        appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
-        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
+        ArrayList<String> arrayList = new ArrayList<>();
+        ListView list = (ListView) findViewById(R.id.list_item);
+        TextInputEditText text = (TextInputEditText) findViewById(R.id.textInput);
+        Button button = (Button) findViewById(R.id.button_push_to_list);
 
-        binding.fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAnchorView(R.id.fab)
-                        .setAction("Action", null).show();
-            }
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
+                android.R.layout.simple_list_item_1,
+                android.R.id.text1, arrayList);
+        list.setAdapter(adapter);
+
+        button.setOnClickListener(view -> {
+            arrayList.add(0, Objects.requireNonNull(text.getText()).toString());
+            adapter.notifyDataSetChanged();
+            text.getText().clear();
         });
+
     }
 
     @Override

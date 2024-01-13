@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Lab_02</string>
+    <string name="app_name">Lab_03</string>
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">Перший фрагмент</string>
@@ -14,4 +14,7 @@
     <string name="text_first">Привіт з першого фрагменту</string>
     <string name="text_second">Привіт з другого фрагменту</string>
     <string name="text_third">Привіт з третього фрагменту</string>
+    <string name="textAdd">Введить ваше значення</string>
+    <string name="hintEnter">Будь яке значення...</string>
+    <string name="btn_push">Додати</string>
 </resources>
